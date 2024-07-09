@@ -1,16 +1,14 @@
-"use client";
-
 import React, { Suspense } from "react";
 import Image from "next/image";
 
-import { Icons } from "@/lib/icon";
+import { login } from "@/lib/actions";
 import { cn } from "@/lib/utils";
 
 import { buttonVariants } from "./ui/button";
 
 function UserAuthForm() {
   return (
-    <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
+    <form className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
       <div className="flex flex-col space-y-4 text-center items-center">
         <Image
           src="/logo.svg"
@@ -29,14 +27,12 @@ function UserAuthForm() {
       </div>
       <Suspense fallback={<p>Loading...</p>}>
         <button
-          type="button"
+          type="submit"
           className={cn(
             buttonVariants({ variant: "default" }),
             "bg-zinc-50 rounded-full text-black font-semibold"
           )}
-          onClick={() => {
-            // signIn("google", { callbackUrl: "/dashboard" });
-          }}
+          formAction={login}
         >
           <Image
             src="/google.svg"
@@ -48,7 +44,7 @@ function UserAuthForm() {
           Sign up with Google
         </button>
       </Suspense>
-    </div>
+    </form>
   );
 }
 
