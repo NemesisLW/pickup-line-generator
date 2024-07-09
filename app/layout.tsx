@@ -6,7 +6,7 @@ import "./globals.css";
 const titlefont = Grand_Hotel({ subsets: ["latin"], weight: "400" });
 
 export const metadata: Metadata = {
-  title: "Pickup Line Generator",
+  title: "Pickup Line Generator | Generate pickup line for your crush now!",
   description: "Generate one for me",
 };
 
