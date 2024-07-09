@@ -13,7 +13,7 @@ export async function login(formData: FormData) {
     provider: "google",
 
     //  TO-DO: Add dynamic redirect URL
-    options: { redirectTo: "http://localhost:3000/auth/callback" },
+    options: { redirectTo: `${process.env.NEXT_PUBLIC_APP_URL}/auth/callback` },
   });
 
   if (error) {

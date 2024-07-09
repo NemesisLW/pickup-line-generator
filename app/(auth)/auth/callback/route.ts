@@ -33,6 +33,6 @@ export async function GET(request: Request) {
     }
   }
 
-  // return the user to an error page with instructions
+  // return the user to an error page
   return NextResponse.redirect(`${origin}/error`);
 }
