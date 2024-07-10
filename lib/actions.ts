@@ -11,8 +11,6 @@ export async function login(formData: FormData) {
   // Sign in with OAuth - Google
   const { data, error } = await supabase.auth.signInWithOAuth({
     provider: "google",
-
-    //  TO-DO: Add dynamic redirect URL
     options: { redirectTo: `${process.env.NEXT_PUBLIC_APP_URL}/auth/callback` },
   });
 
