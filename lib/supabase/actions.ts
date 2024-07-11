@@ -2,10 +2,9 @@
 
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
+import { createClient } from "./client";
 
-import { createClient } from "./supabase/server";
-
-export async function login(formData: FormData) {
+export async function Login(formData: FormData) {
   const supabase = createClient();
 
   // Sign in with OAuth - Google

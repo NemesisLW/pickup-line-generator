@@ -1,18 +1,17 @@
 import React from "react";
 
-import { signOut } from "@/lib/actions";
-
 import { Button } from "./ui/button";
+import { signOut } from "@/lib/supabase/actions";
 
 function SignOutButton() {
   return (
-    <form>
+    <form className="flex w-full justify-end px-4">
       <Button
         type="submit"
         formAction={signOut}
-        className="px-4 py-2 bg-pink-200 text-pink-700 rounded-full hover:bg-pink-300 transition-colors"
+        className="h-8 w-16 rounded-3xl bg-[#B5002C]/[0.13] px-4 py-2 text-xl text-[#B5002C] transition-colors hover:bg-[#B5002C]/[0.2] md:h-12 md:w-24 md:text-3xl"
       >
-        Sign out
+        Signout
       </Button>
     </form>
   );

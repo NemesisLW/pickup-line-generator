@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 
 import { createClient } from "@/lib/supabase/server";
 import PickupLineInputForm from "@/components/pickupline-input-form";
+import SignOutButton from "@/components/sign-out-button";
 
 export default async function Page() {
   const supabase = createClient();
@@ -23,12 +24,12 @@ export default async function Page() {
           priority
         />
       </div>
-      <div className="relative z-10 flex flex-col items-center justify-center w-full text-center p-8 md:p-12 lg:p-24">
-        <p>Hello {data.user.user_metadata.full_name}!</p>
+      <div className="relative z-10 flex w-full flex-col items-center justify-center p-8 text-center">
+        <SignOutButton />
         <PickupLineInputForm />
       </div>
       {/* Semi-transparent overlay to ensure text readability */}
-      <div className="absolute inset-0 bg-white bg-opacity-80"></div>
+      <div className="absolute inset-0 bg-white bg-opacity-90"></div>
     </div>
   );
 }

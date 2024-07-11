@@ -1,15 +1,15 @@
 import React, { Suspense } from "react";
 import Image from "next/image";
 
-import { login } from "@/lib/actions";
 import { cn } from "@/lib/utils";
 
 import { buttonVariants } from "./ui/button";
+import { Login } from "@/lib/supabase/actions";
 
 function UserAuthForm() {
   return (
     <form className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
-      <div className="flex flex-col space-y-4 text-center items-center">
+      <div className="flex flex-col items-center space-y-4 text-center">
         <Image
           src="/logo.svg"
           alt="logo"
@@ -30,9 +30,9 @@ function UserAuthForm() {
           type="submit"
           className={cn(
             buttonVariants({ variant: "default" }),
-            "bg-zinc-50 rounded-full text-black font-semibold"
+            "rounded-full bg-zinc-50 font-semibold text-black",
           )}
-          formAction={login}
+          formAction={Login}
         >
           <Image
             src="/google.svg"
