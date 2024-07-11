@@ -1,36 +1,124 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Pickup Line Generator
+
+<div align="center">
+<img src="/public/logo.svg" alt="Logo" width="80" height="80">
+
+<h3 align="center">Pickup Line Generator</h3>
+
+<p align="center">
+Generate creative pickup lines based on your crush's description and preferred style!
+<br/>
+<br/>
+<a href="https://github.com/NemesisLW/pickup-line-generator"><strong>Explore the docs »</strong></a>
+<br/>
+<br/>
+<a href="https://pickup-line-generator.vercel.app">View Demo</a> ·
+<a href="https://github.com/NemesisLW/pickup-line-generator/issues">Report Bug</a> ·
+<a href="https://github.com/NemesisLW/pickup-line-generator/issues">Request Feature</a>
+</p>
+</div>
+
+## About The Project
+
+![Product Screenshot](/api/placeholder/1920/1080)
+
+Pickup Line Generator is a fun and creative web application that helps you craft the perfect pickup line for your crush. Simply input a description of your crush and choose a style, and our AI-powered generator will create two unique pickup lines tailored to your preferences.
+
+Key features:
+
+- User-friendly interface for inputting crush descriptions and selecting styles
+- AI-powered generation of pickup lines using OpenAI API (or Mistral from Replicate) and Vercel AI SDK
+- Responsive design for seamless use on desktop and mobile devices
+- Secure authentication with Supabase and OAuth (Google)
+
+## Built With
+
+This project is built using modern web technologies and frameworks:
+
+- [Next.js](https://nextjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Shadcn UI](https://ui.shadcn.com/)
+- [Supabase](https://supabase.io/)
+- [OpenAI API](https://openai.com/)
+- [Vercel AI SDK](https://sdk.vercel.ai/docs/introduction)
+- [Vercel](https://vercel.com/) (for deployment)
 
 ## Getting Started
 
-First, run the development server:
+To get a local copy up and running, follow these simple steps.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Prerequisites
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Node.js (v18 or later)
+- npm
+  ```sh
+  npm install npm@latest -g
+  ```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Installation
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+1. Clone the repo
+   ```sh
+   git clone https://github.com/NemesisLW/pickup-line-generator.git
+   ```
+2. Install NPM packages
+   ```sh
+   npm install
+   ```
+3. Set up environment variables
 
-## Learn More
+   ```sh
+   cp .env.example .env.local
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+   Then, fill in the necessary API keys and configuration in the `.env.local` file.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+4. Run the development server
+   ```sh
+   npm run dev
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Usage
 
-## Deploy on Vercel
+1. Open the application in your web browser
+2. Sign in using your Google account
+3. Enter a description of your crush in the provided text area
+4. Eter the preferred style for your pickup lines in the input field
+5. Click the "Generate" button
+6. View and enjoy your two custom-generated pickup lines!
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Roadmap
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- [ ] Implement user profiles and saved pickup lines
+- [ ] Add social sharing features
+- [ ] Expand language support for international users
+
+See the [open issues](https://github.com/NemesisLW/pickup-line-generator/issues) for a full list of proposed features (and known issues).
+
+## Contributing
+
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## License
+
+Distributed under the MIT License. See `LICENSE` for more information.
+
+## Contact
+
+Arghya Dutta - [@your_twitter](https://twitter.com/Arghyad18) - arghyadutta119@gmail.com
+
+Project Link: [https://github.com/NemesisLW/pickup-line-generator](https://github.com/NemesisLW/pickup-line-generator)
+
+## Acknowledgments
+
+- [1811 Labs](https://bento.me/1811labs) for the assignment
+- [Vercel](https://vercel.com/) for hosting and deployment
+- [Supabase](https://supabase.io/) for authentication services
+- [Shadcn UI](https://ui.shadcn.com/) for the beautiful UI components
