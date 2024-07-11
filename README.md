@@ -20,7 +20,7 @@ Generate creative pickup lines based on your crush's description and preferred s
 
 ## About The Project
 
-![Product Screenshot](/api/placeholder/1920/1080)
+![Product Screenshot](/public/screenshot.png)
 
 Pickup Line Generator is a fun and creative web application that helps you craft the perfect pickup line for your crush. Simply input a description of your crush and choose a style, and our AI-powered generator will create two unique pickup lines tailored to your preferences.
 
