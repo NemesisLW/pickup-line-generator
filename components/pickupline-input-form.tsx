@@ -7,10 +7,11 @@ import { Input } from "@/components/ui/input";
 import GenerateButton from "./generate-cta-button";
 import { generateOutput } from "@/lib/ai/actions";
 import { useFormState, useFormStatus } from "react-dom";
+import { OutputSchemaType } from "@/lib/schema";
 
 const initialState: {
   message: string;
-  Data?: any;
+  pickupLines?: OutputSchemaType;
 } = { message: "" };
 
 function PickupLineInputForm() {
@@ -63,6 +64,8 @@ function PickupLineInputForm() {
           <GenerateButton className="w-full" pending={pending} isServerAction />
         </div>
       </form>
+      <p>{state.pickupLines?.pickupLines[0].text}</p>
+      <p>{state.pickupLines?.pickupLines[1].text}</p>
     </div>
   );
 }

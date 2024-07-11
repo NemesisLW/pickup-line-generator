@@ -35,12 +35,13 @@ Key features:
 
 This project is built using modern web technologies and frameworks:
 
-- [Next.js](https://nextjs.org/)
-- [TypeScript](https://www.typescriptlang.org/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [Shadcn UI](https://ui.shadcn.com/)
-- [Supabase](https://supabase.io/)
-- [OpenAI API](https://openai.com/)
+- Next.js [App Router](https://nextjs.org/docs/app) for framework
+- [TypeScript](https://www.typescriptlang.org/) for type checking, safety, and code organization
+- [Tailwind CSS](https://tailwindcss.com/) for styling and responsive design
+- [Shadcn UI](https://ui.shadcn.com/) for the beautiful UI components
+- [Supabase](https://supabase.io/) for authentication services
+- [Anyscale](https://anyscale.com/) Inference for Mixtral (LLM)
+- [OpenAI SDK](https://openai.com/) for API calls
 - [Vercel](https://vercel.com/) (for deployment)
 
 ## Getting Started
