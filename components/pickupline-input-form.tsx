@@ -1,10 +1,11 @@
 "use client";
+
+import React from "react";
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
 
-import React from "react";
 import GenerateButton from "./generate-cta-button";
-import { Generate } from "@/lib/ai/actions";
+import { generateOutput } from "@/lib/ai/actions";
 import { useFormState, useFormStatus } from "react-dom";
 
 const initialState: {
@@ -14,7 +15,7 @@ const initialState: {
 
 function PickupLineInputForm() {
   const { pending } = useFormStatus();
-  const [state, formAction] = useFormState(Generate, initialState);
+  const [state, formAction] = useFormState(generateOutput, initialState);
 
   return (
     <div className="mx-auto w-full max-w-lg rounded-md bg-transparent text-[#FF2157]">
@@ -52,6 +53,7 @@ function PickupLineInputForm() {
             id="style"
             name="style"
             type="text"
+            autoComplete="off"
             placeholder="eg: Funny"
             className="w-full placeholder:text-[#DCDCDC] focus:outline-none focus:ring-0 md:text-lg"
             required
@@ -60,7 +62,6 @@ function PickupLineInputForm() {
         <div className="pt-4 md:pt-8">
           <GenerateButton className="w-full" pending={pending} isServerAction />
         </div>
-        <p>{state.Data?.style}</p>
       </form>
     </div>
   );

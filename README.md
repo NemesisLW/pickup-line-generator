@@ -27,7 +27,7 @@ Pickup Line Generator is a fun and creative web application that helps you craft
 Key features:
 
 - User-friendly interface for inputting crush descriptions and selecting styles
-- AI-powered generation of pickup lines using OpenAI API (or Mistral from Replicate) and Vercel AI SDK
+- AI-powered generation of pickup lines using OpenAI API (or Mistral from Replicate)
 - Responsive design for seamless use on desktop and mobile devices
 - Secure authentication with Supabase and OAuth (Google)
 
@@ -41,7 +41,6 @@ This project is built using modern web technologies and frameworks:
 - [Shadcn UI](https://ui.shadcn.com/)
 - [Supabase](https://supabase.io/)
 - [OpenAI API](https://openai.com/)
-- [Vercel AI SDK](https://sdk.vercel.ai/docs/introduction)
 - [Vercel](https://vercel.com/) (for deployment)
 
 ## Getting Started
