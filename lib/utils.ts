@@ -1,10 +1,21 @@
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
-import { FormSchema, OutputSchema, OutputSchemaType } from "./schema";
+import { OutputSchema, OutputSchemaType } from "./schema";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
+
+export const copyToClipboard = (text: string) => {
+  navigator.clipboard
+    .writeText(text)
+    .then(() => {
+      alert("Copied to clipboard!");
+    })
+    .catch((err) => {
+      console.error("Failed to copy: ", err);
+    });
+};
 
 // parse the pickup line texts from the data
 export function parsePickupLineTexts(data: OutputSchemaType): string[] {

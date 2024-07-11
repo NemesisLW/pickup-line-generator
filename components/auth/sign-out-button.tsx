@@ -1,7 +1,7 @@
 import React from "react";
 
-import { Button } from "./ui/button";
 import { signOut } from "@/lib/supabase/actions";
+import { Button } from "../ui/button";
 
 function SignOutButton() {
   return (

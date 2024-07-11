@@ -108,7 +108,7 @@ Contributions are what make the open source community such an amazing place to l
 
 ## Contact
 
-Arghya Dutta - [@your_twitter](https://twitter.com/Arghyad18) - arghyadutta119@gmail.com
+Arghya Dutta - [@Arghyad18](https://twitter.com/Arghyad18) - arghyadutta119@gmail.com
 
 Project Link: [https://github.com/NemesisLW/pickup-line-generator](https://github.com/NemesisLW/pickup-line-generator)
 

@@ -3,6 +3,7 @@
 import { OpenAI } from "openai";
 import { FormSchema, OutputSchema } from "../schema";
 import Instructor from "@instructor-ai/instructor";
+import { parsePickupLineTexts } from "../utils";
 
 // Anyscale Inference for Mixtral (LLM)
 const anyscale = new OpenAI({
@@ -59,9 +60,11 @@ export async function generateOutput(
       max_retries: 3,
     });
 
+    // parse the pickup line texts from the data
+    const listPickupLines = parsePickupLineTexts(PickupLines);
     return {
       message: "success",
-      pickupLines: PickupLines,
+      pickupLines: listPickupLines,
     };
   } catch (e) {
     console.log(e);

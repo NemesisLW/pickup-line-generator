@@ -2,8 +2,8 @@ import Image from "next/image";
 import { redirect } from "next/navigation";
 
 import { createClient } from "@/lib/supabase/server";
-import PickupLineInputForm from "@/components/pickupline-input-form";
-import SignOutButton from "@/components/sign-out-button";
+import SignOutButton from "@/components/auth/sign-out-button";
+import PickupLineGenerator from "@/components/pickupline-generator";
 
 export default async function Page() {
   const supabase = createClient();
@@ -26,7 +26,7 @@ export default async function Page() {
       </div>
       <div className="relative z-10 flex w-full flex-col items-center justify-center p-8 text-center">
         <SignOutButton />
-        <PickupLineInputForm />
+        <PickupLineGenerator />
       </div>
       {/* Semi-transparent overlay to ensure text readability */}
       <div className="absolute inset-0 bg-white bg-opacity-90"></div>

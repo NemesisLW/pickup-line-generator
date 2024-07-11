@@ -3,8 +3,7 @@ import { Inter } from "next/font/google";
 import Link from "next/link";
 
 import { cn } from "@/lib/utils";
-import UserAuthForm from "@/components/user-auth-form";
-
+import UserAuthForm from "@/components/auth/user-auth-form";
 const inter = Inter({ subsets: ["latin"] });
 
 function LoginPage() {
@@ -12,10 +11,10 @@ function LoginPage() {
     <div
       className={cn(
         "container flex h-screen w-screen flex-col items-center justify-between p-8 md:p-12 lg:p-24",
-        inter.className
+        inter.className,
       )}
     >
-      <div className="flex-grow flex items-center justify-center">
+      <div className="flex flex-grow items-center justify-center">
         <UserAuthForm />
       </div>
       <p className="px-8 text-center text-sm text-[#AAB5C0]">

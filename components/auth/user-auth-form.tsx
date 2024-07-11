@@ -3,7 +3,7 @@ import Image from "next/image";
 
 import { cn } from "@/lib/utils";
 
-import { buttonVariants } from "./ui/button";
+import { buttonVariants } from "../ui/button";
 import { Login } from "@/lib/supabase/actions";
 
 function UserAuthForm() {
