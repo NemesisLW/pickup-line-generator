@@ -1,8 +1,8 @@
-import { OutputSchemaType } from "@/lib/schema";
-import React from "react";
-import { Card, CardContent } from "../ui/card";
 import { copyToClipboard } from "@/lib/utils";
 import Image from "next/image";
+import React from "react";
+import GenerateButton from "../generate-cta-button";
+import { Card, CardContent } from "../ui/card";
 
 function OutputForm({ pickupLines }: { pickupLines: string[] }) {
   return (
@@ -26,6 +26,7 @@ function OutputForm({ pickupLines }: { pickupLines: string[] }) {
           </CardContent>
         </Card>
       ))}
+      <GenerateButton className="w-full" text="Regenerate Pickup Line" />
     </div>
   );
 }

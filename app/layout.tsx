@@ -1,6 +1,6 @@
+import { Toaster } from "@/components/ui/sonner";
 import type { Metadata } from "next";
 import { Grand_Hotel } from "next/font/google";
-
 import "./globals.css";
 
 const titlefont = Grand_Hotel({ subsets: ["latin"], weight: "400" });
@@ -17,7 +17,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={titlefont.className}>{children}</body>
+      <body className={titlefont.className}>
+        <main>{children}</main>
+        <Toaster richColors />
+      </body>
     </html>
   );
 }

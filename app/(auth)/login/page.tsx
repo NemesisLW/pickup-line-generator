@@ -1,9 +1,9 @@
-import React from "react";
+import UserAuthForm from "@/components/auth/user-auth-form";
+import { cn } from "@/lib/utils";
 import { Inter } from "next/font/google";
 import Link from "next/link";
+import React from "react";
 
-import { cn } from "@/lib/utils";
-import UserAuthForm from "@/components/auth/user-auth-form";
 const inter = Inter({ subsets: ["latin"] });
 
 function LoginPage() {

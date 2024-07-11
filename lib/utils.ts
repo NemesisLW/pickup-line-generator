@@ -1,4 +1,5 @@
-import { type ClassValue, clsx } from "clsx";
+import { clsx, type ClassValue } from "clsx";
+import { toast } from "sonner";
 import { twMerge } from "tailwind-merge";
 import { OutputSchema, OutputSchemaType } from "./schema";
 
@@ -10,10 +11,11 @@ export const copyToClipboard = (text: string) => {
   navigator.clipboard
     .writeText(text)
     .then(() => {
-      alert("Copied to clipboard!");
+      toast.success("Copied to clipboard!");
     })
     .catch((err) => {
       console.error("Failed to copy: ", err);
+      toast.error("Failed to copy!");
     });
 };
 

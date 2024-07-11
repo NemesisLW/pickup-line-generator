@@ -1,10 +1,8 @@
-import React, { Suspense } from "react";
-import Image from "next/image";
-
-import { cn } from "@/lib/utils";
-
-import { buttonVariants } from "../ui/button";
 import { Login } from "@/lib/supabase/actions";
+import { cn } from "@/lib/utils";
+import Image from "next/image";
+import React, { Suspense } from "react";
+import { buttonVariants } from "../ui/button";
 
 function UserAuthForm() {
   return (

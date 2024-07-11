@@ -1,6 +1,6 @@
-import { Button } from "./ui/button";
-import Image from "next/image";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
+import { Button } from "./ui/button";
 
 interface GenerateButtonProps {
   className?: string;

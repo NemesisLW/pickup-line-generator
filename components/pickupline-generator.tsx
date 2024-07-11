@@ -1,11 +1,7 @@
 "use client";
 
-import React from "react";
-import { Textarea } from "@/components/ui/textarea";
-import { Input } from "@/components/ui/input";
-
-import GenerateButton from "./generate-cta-button";
 import { generateOutput } from "@/lib/ai/actions";
+import React from "react";
 import { useFormState, useFormStatus } from "react-dom";
 import PickupLineInputForm from "./pickupline-generator/input-form";
 import OutputForm from "./pickupline-generator/output-form";
