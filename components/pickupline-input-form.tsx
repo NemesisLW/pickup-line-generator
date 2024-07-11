@@ -18,12 +18,12 @@ function PickupLineInputForm() {
         <div>
           <label
             htmlFor="Crush"
-            className="mb-1 block text-left font-medium text-[#A5455C] text-muted-foreground"
+            className="mb-1 block text-left text-[#A5455C]"
           >
             Tell us about your crush
           </label>
           <Textarea
-            id="crush"
+            id="Crush"
             rows={4}
             placeholder={"She is a 10 but...\nHe likes football...."}
             className="w-full resize-none placeholder:text-[#DCDCDC] focus:outline-none focus:ring-0"
@@ -31,13 +31,13 @@ function PickupLineInputForm() {
         </div>
         <div>
           <label
-            htmlFor="email"
-            className="mb-1 block text-left font-medium text-[#A5455C] text-muted-foreground"
+            htmlFor="Style"
+            className="mb-1 block text-left text-[#A5455C]"
           >
             Style
           </label>
           <Input
-            id="style"
+            id="Style"
             type="text"
             placeholder="eg: Funny"
             className="w-full placeholder:text-[#DCDCDC] focus:outline-none focus:ring-0"
