@@ -20,9 +20,6 @@ export async function Login(formData: FormData) {
   if (data.url) {
     redirect(data.url);
   }
-
-  revalidatePath("/", "layout");
-  // redirect("/generate");
 }
 
 export async function signOut(formData: FormData) {

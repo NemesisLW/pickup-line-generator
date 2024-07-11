@@ -1,6 +1,7 @@
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 import { createServerClient, type CookieOptions } from "@supabase/ssr";
+import { revalidatePath } from "next/cache";
 
 export async function GET(request: Request) {
   const { searchParams, origin } = new URL(request.url);
@@ -25,14 +26,15 @@ export async function GET(request: Request) {
             cookieStore.delete({ name, ...options });
           },
         },
-      }
+      },
     );
     const { error } = await supabase.auth.exchangeCodeForSession(code);
     if (!error) {
+      revalidatePath("/", "layout");
       return NextResponse.redirect(`${origin}/generate`);
     }
   }
 
-  // return the user to an error page
-  return NextResponse.redirect(`${origin}/error`);
+  // return the user to home page
+  return NextResponse.redirect(`${origin}`);
 }

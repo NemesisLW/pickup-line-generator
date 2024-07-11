@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 import GenerateButton from "@/components/generate-cta-button";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -25,7 +26,9 @@ export default function Home() {
               Generator
             </h1>
           </div>
-          <GenerateButton className="mb-24 w-[150px] md:w-[200px] lg:w-[300px]" />
+          <Link href="/generate">
+            <GenerateButton className="mb-24 w-[150px] md:w-[200px] lg:w-[300px]" />
+          </Link>
         </div>
       </div>
     </main>
