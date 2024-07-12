@@ -65,7 +65,7 @@ export async function generateOutput(
   }
 
   try {
-    const timeoutPromise = setTimeout(9995).then(() => {
+    const timeoutPromise = setTimeout(7000).then(() => {
       throw new Error("Request timed out");
     });
     const generatePromise = generatePickupLines(validatedInputs.data);
