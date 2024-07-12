@@ -2,13 +2,6 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { Button } from "./ui/button";
 
-interface GenerateButtonProps {
-  className?: string;
-  text?: string;
-  isServerAction?: boolean;
-  pending?: boolean;
-}
-
 function GenerateButton({
   className,
   text = "Generate one for me",
