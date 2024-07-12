@@ -66,7 +66,9 @@ export async function generateOutput(
 
   try {
     const timeoutPromise = setTimeout(7000).then(() => {
-      throw new Error("Request timed out");
+      throw new Error(
+        "Request timed out - Third party API Endpoints may be experiencing issues",
+      );
     });
     const generatePromise = generatePickupLines(validatedInputs.data);
 

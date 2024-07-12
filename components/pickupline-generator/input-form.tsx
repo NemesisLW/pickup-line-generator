@@ -6,12 +6,16 @@ import { Textarea } from "../ui/textarea";
 function PickupLineInputForm({
   formAction,
   message,
+  error,
 }: {
   formAction: (payload: FormData) => void;
   message?: string;
+  error?: string;
 }) {
   if (message === "error") {
-    toast.error("Failed to generate pickup lines. Please try again.");
+    toast.error("Failed to generate pickup lines. Please try again.", {
+      description: error,
+    });
   }
 
   return (
