@@ -4,7 +4,7 @@ import Image from "next/image";
 import React from "react";
 import { useFormState } from "react-dom";
 import { toast } from "sonner";
-import GenerateButton from "../generate-cta-button";
+import GenerateFormButton from "../buttons/generate-form-button";
 import { Card, CardContent } from "../ui/card";
 
 // TODO: Debug Multiple Regeneration issues
@@ -50,11 +50,9 @@ function OutputForm({ pickupLines, InitialFormState }: FormOutputProps) {
         </Card>
       ))}
       <form className="pt-4">
-        <GenerateButton
-          className="w-full"
+        <GenerateFormButton
           text="Regenerate Pickup Line"
           formAction={formAction}
-          isServerAction
         />
       </form>
     </div>

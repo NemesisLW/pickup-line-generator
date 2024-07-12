@@ -1,6 +1,6 @@
 import React from "react";
 import { useFormStatus } from "react-dom";
-import GenerateButton from "../generate-cta-button";
+import GenerateFormButton from "../buttons/generate-form-button";
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
 
@@ -47,7 +47,7 @@ function PickupLineInputForm({
         />
       </div>
       <div className="pt-4 md:pt-8">
-        <GenerateButton className="w-full" pending={pending} isServerAction />
+        <GenerateFormButton />
       </div>
     </form>
   );

@@ -1,9 +1,6 @@
-import React from "react";
+import GenerateButton from "@/components/buttons/generate-cta-button";
 import Image from "next/image";
-import Link from "next/link";
-
-import { Button } from "@/components/ui/button";
-import GenerateButton from "@/components/generate-cta-button";
+import React from "react";
 
 function page() {
   return (
