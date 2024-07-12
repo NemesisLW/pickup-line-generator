@@ -28,7 +28,7 @@ function UserAuthForm() {
           type="submit"
           className={cn(
             buttonVariants({ variant: "default" }),
-            "rounded-full bg-zinc-50 font-semibold text-black",
+            "rounded-full bg-zinc-50 font-semibold text-black hover:bg-zinc-200",
           )}
           formAction={Login}
         >
