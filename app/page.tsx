@@ -5,7 +5,7 @@ import React from "react";
 
 export default function Home() {
   return (
-    <main className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-[#FED8D8] md:bg-transparent">
+    <main className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-[#FED8D8] md:bg-transparent p-4 md:p-0">
       <div className="absolute inset-0 hidden md:block">
         <Image
           src="/background.png"
