@@ -23,7 +23,7 @@ function PickupLineGenerator() {
         Pickup Line Generator
       </h1>
       {!state.pickupLines ? (
-        <PickupLineInputForm formAction={formAction} />
+        <PickupLineInputForm formAction={formAction} message={state.message} />
       ) : (
         <OutputForm
           pickupLines={state.pickupLines}

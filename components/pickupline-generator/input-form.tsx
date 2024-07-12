@@ -1,12 +1,19 @@
+import { toast } from "sonner";
 import GenerateFormButton from "../buttons/generate-form-button";
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
 
 function PickupLineInputForm({
   formAction,
+  message,
 }: {
   formAction: (payload: FormData) => void;
+  message?: string;
 }) {
+  if (message === "error") {
+    toast.error("Failed to generate pickup lines. Please try again.");
+  }
+
   return (
     <form
       className="flex flex-col text-xl md:text-2xl space-y-2 lg:space-y-4"

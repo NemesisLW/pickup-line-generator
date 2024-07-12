@@ -1,5 +1,6 @@
 "use server";
 
+import { setTimeout } from "timers/promises";
 import Instructor from "@instructor-ai/instructor";
 import { OpenAI } from "openai";
 import { OutputSchema } from "../schema";
@@ -58,25 +59,40 @@ export async function generateOutput(
   // Return early if the form data is invalid
   if (!validatedInputs.success) {
     return {
-      message: "Invalid form data",
+      message: "error",
       errors: validatedInputs.error.flatten().fieldErrors,
     };
   }
 
   try {
-    const listPickupLines = await generatePickupLines(validatedInputs.data);
+    const timeoutPromise = setTimeout(10010).then(() => {
+      throw new Error("Request timed out");
+    });
+    const generatePromise = generatePickupLines(validatedInputs.data);
+
+    const listPickupLines = await Promise.race([
+      generatePromise,
+      timeoutPromise,
+    ]);
+
+    if (!listPickupLines || listPickupLines.length === 0) {
+      throw new Error("No pickup lines were generated");
+    }
+
     return {
       message: "success",
       pickupLines: listPickupLines,
       InitialFormState: validatedInputs.data,
     };
   } catch (e) {
+    console.error(e);
     return {
-      message: "Error generating output.",
-      errors: e,
+      message: "error",
+      errors: e instanceof Error ? e.message : "Unknown error occurred",
     };
   }
 }
+
 export async function regenerateOutput(
   prevState: GenerateOutputState,
   formData: FormData,
