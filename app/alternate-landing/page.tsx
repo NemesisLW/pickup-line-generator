@@ -42,7 +42,7 @@ function LandingPage() {
       </div>
 
       {/* Desktop Design */}
-      <div className="hidden md:flex relative -left-2 z-10 min-h-screen flex-col items-center justify-start pt-20 w-full">
+      <div className="hidden md:flex relative -left-2 z-10 min-h-screen flex-col items-center justify-start pt-20 2xl:pt-8 w-full">
         <div className="text-center mb-64 relative -left-1.5">
           <h1 className="text-5xl leading-tight text-white">
             Pickup Line
