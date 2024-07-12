@@ -64,17 +64,13 @@ export async function generateOutput(
   }
 
   try {
-    console.log("generating pickup lines...");
     const listPickupLines = await generatePickupLines(validatedInputs.data);
-    console.log("First pickup lines generated");
-    console.log(listPickupLines);
     return {
       message: "success",
       pickupLines: listPickupLines,
       InitialFormState: validatedInputs.data,
     };
   } catch (e) {
-    console.log(e);
     return {
       message: "Error generating output.",
       errors: e,
@@ -86,8 +82,6 @@ export async function regenerateOutput(
   formData: FormData,
 ): Promise<GenerateOutputState> {
   try {
-    console.log("regenerating pickup lines...");
-
     if (!prevState.InitialFormState) {
       throw new Error("Initial form state is missing");
     }
@@ -96,8 +90,6 @@ export async function regenerateOutput(
       prevState.InitialFormState,
     );
 
-    console.log("New pickup lines generated");
-    console.log(listPickupLines);
     return {
       message: "success",
       pickupLines: listPickupLines,

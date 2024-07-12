@@ -90,7 +90,7 @@ To get a local copy up and running, follow these simple steps.
 
 ## Roadmap
 
-- [ ] Rate Limiting API calls & Regenerations
+- [ ] Rate Limiting API calls & Regenerations (w/ [Upstash](https://github.com/upstash/ratelimit-js))
 - [ ] Implement user profiles and saved pickup lines
 - [ ] Add social sharing features
 - [ ] Expand language support for international users

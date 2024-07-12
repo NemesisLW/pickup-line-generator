@@ -27,6 +27,7 @@ export default async function Page() {
         <SignOutButton />
         <PickupLineGenerator />
       </div>
+
       {/* Semi-transparent overlay to ensure text readability */}
       <div className="absolute inset-0 bg-white bg-opacity-90"></div>
     </div>
