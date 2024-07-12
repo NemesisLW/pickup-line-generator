@@ -13,7 +13,7 @@ function PickupLineInputForm({
 
   return (
     <form
-      className="flex flex-col text-xl md:text-2xl lg:space-y-4"
+      className="flex flex-col text-xl md:text-2xl space-y-2 lg:space-y-4"
       action={formAction}
     >
       <div>

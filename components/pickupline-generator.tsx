@@ -16,7 +16,7 @@ function PickupLineGenerator() {
     <div className="mx-auto w-full max-w-lg rounded-md bg-transparent text-[#FF2157]">
       <h1
         className={cn(
-          "text-3xl leading-tight md:text-4xl lg:text-5xl",
+          "text-3xl leading-tight md:text-5xl",
           !state.message ? "mb-4" : "mb-8",
         )}
       >
