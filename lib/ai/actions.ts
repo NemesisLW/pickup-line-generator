@@ -4,6 +4,7 @@ import Instructor from "@instructor-ai/instructor";
 import { OpenAI } from "openai";
 import { FormSchema, OutputSchema } from "../schema";
 import { parsePickupLineTexts } from "../utils";
+import { promptInstructions } from "./instructions";
 
 // Anyscale Inference for Mixtral (LLM)
 const anyscale = new OpenAI({
@@ -40,9 +41,6 @@ export async function generateOutput(
       errors: validatedInputs.error.flatten().fieldErrors,
     };
   }
-
-  const promptInstructions =
-    "The user will provide you with the description of their crush and the style of the pickup lines they are looking for. Based on the those information, generate a survey object with 1 field: a pickup lines array of two elements, where every element has 2 fields: 'id' and 'text' and return it in json format.";
 
   try {
     // call the Mixtral API to generate the pickup lines

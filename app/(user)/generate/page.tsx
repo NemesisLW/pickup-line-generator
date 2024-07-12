@@ -1,9 +1,8 @@
-import Image from "next/image";
-import { redirect } from "next/navigation";
-
-import { createClient } from "@/lib/supabase/server";
 import SignOutButton from "@/components/auth/sign-out-button";
 import PickupLineGenerator from "@/components/pickupline-generator";
+import { createClient } from "@/lib/supabase/server";
+import Image from "next/image";
+import { redirect } from "next/navigation";
 
 export default async function Page() {
   const supabase = createClient();

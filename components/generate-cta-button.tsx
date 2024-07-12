@@ -19,7 +19,7 @@ function GenerateButton({
     <Button
       className={cn(
         className,
-        "h-8 rounded-full px-4 py-2 text-base text-white shadow-xl transition duration-300 hover:bg-rose-600 md:h-12 md:px-6 md:py-3 md:text-xl lg:text-3xl",
+        "h-8 rounded-full px-4 py-2 text-base text-white shadow-xl transition duration-300 hover:bg-rose-600 md:h-12 md:px-6 md:py-2.5 md:text-xl lg:text-3xl",
       )}
       type={isServerAction ? "submit" : "button"}
       aria-disabled={isServerAction && pending}
