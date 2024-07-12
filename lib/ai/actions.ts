@@ -1,8 +1,8 @@
 "use server";
 
+import Instructor from "@instructor-ai/instructor";
 import { OpenAI } from "openai";
 import { FormSchema, OutputSchema } from "../schema";
-import Instructor from "@instructor-ai/instructor";
 import { parsePickupLineTexts } from "../utils";
 
 // Anyscale Inference for Mixtral (LLM)
