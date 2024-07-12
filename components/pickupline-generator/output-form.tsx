@@ -7,26 +7,20 @@ import { toast } from "sonner";
 import GenerateFormButton from "../buttons/generate-form-button";
 import { Card, CardContent } from "../ui/card";
 
-// TODO: Debug Multiple Regeneration issues
-
 function OutputForm({ pickupLines, InitialFormState }: FormOutputProps) {
-  // const formActionPayload = regenerateOutput.bind(null, InitialFormState!);
-
   const initialState: GenerateOutputState = {
-    message: "regenerating...",
-    InitialFormState: {
-      crushDescription: InitialFormState?.crushDescription!,
-      style: InitialFormState?.style!,
-    },
+    message: "",
+    InitialFormState: InitialFormState,
+    pickupLines: pickupLines,
   };
+
   const [state, formAction] = useFormState(regenerateOutput, initialState);
 
-  if (state.message === "error") {
-    toast.error("Error regenerating pickup lines.");
-    console.log(state.pickupLines);
-  }
-
   const currentPickupLines = state.pickupLines || pickupLines;
+
+  if (state.message === "error" && state.errors) {
+    toast.error(`Error regenerating pickup lines: ${state.errors}`);
+  }
 
   return (
     <div className="mx-auto w-full max-w-lg space-y-4">

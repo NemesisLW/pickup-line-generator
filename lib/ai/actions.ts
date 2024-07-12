@@ -81,16 +81,19 @@ export async function generateOutput(
     };
   }
 }
-
 export async function regenerateOutput(
   prevState: GenerateOutputState,
   formData: FormData,
 ): Promise<GenerateOutputState> {
   try {
     console.log("regenerating pickup lines...");
-    console.log(prevState.InitialFormState?.crushDescription);
+
+    if (!prevState.InitialFormState) {
+      throw new Error("Initial form state is missing");
+    }
+
     const listPickupLines = await generatePickupLines(
-      prevState.InitialFormState!,
+      prevState.InitialFormState,
     );
 
     console.log("New pickup lines generated");
@@ -98,6 +101,7 @@ export async function regenerateOutput(
     return {
       message: "success",
       pickupLines: listPickupLines,
+      InitialFormState: prevState.InitialFormState,
     };
   } catch (e) {
     console.error(e);

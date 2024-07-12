@@ -90,6 +90,7 @@ To get a local copy up and running, follow these simple steps.
 
 ## Roadmap
 
+- [ ] Rate Limiting API calls & Regenerations
 - [ ] Implement user profiles and saved pickup lines
 - [ ] Add social sharing features
 - [ ] Expand language support for international users

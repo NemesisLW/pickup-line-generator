@@ -1,5 +1,3 @@
-import React from "react";
-import { useFormStatus } from "react-dom";
 import GenerateFormButton from "../buttons/generate-form-button";
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
@@ -9,8 +7,6 @@ function PickupLineInputForm({
 }: {
   formAction: (payload: FormData) => void;
 }) {
-  const { pending } = useFormStatus();
-
   return (
     <form
       className="flex flex-col text-xl md:text-2xl space-y-2 lg:space-y-4"
