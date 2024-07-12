@@ -1,6 +1,6 @@
 interface FormInputProps {
-  prevStyle: string;
-  prevCrushDescription: string;
+  style: string;
+  crushDescription: string;
 }
 
 interface GenerateButtonProps {
@@ -8,6 +8,7 @@ interface GenerateButtonProps {
   text?: string;
   isServerAction?: boolean;
   pending?: boolean;
+  formAction?: (formData: FormData) => void | ((payload: FormData) => void);
 }
 
 interface GenerateOutputProps {

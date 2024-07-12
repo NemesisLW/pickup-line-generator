@@ -2,11 +2,14 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { Button } from "./ui/button";
 
+// TODO: Add a loading state for the button
+
 function GenerateButton({
   className,
   text = "Generate one for me",
   isServerAction = false,
   pending = false,
+  formAction,
 }: GenerateButtonProps) {
   return (
     <Button
@@ -16,6 +19,7 @@ function GenerateButton({
       )}
       type={isServerAction ? "submit" : "button"}
       aria-disabled={isServerAction && pending}
+      formAction={formAction}
     >
       <span className="flex items-center justify-center space-x-1 sm:space-x-2">
         <Image

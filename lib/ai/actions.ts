@@ -2,8 +2,8 @@
 
 import Instructor from "@instructor-ai/instructor";
 import { OpenAI } from "openai";
-import { FormSchema, OutputSchema } from "../schema";
-import { parsePickupLineTexts } from "../utils";
+import { OutputSchema } from "../schema";
+import { parseFormData, parsePickupLineTexts } from "../utils";
 import { promptInstructions } from "./instructions";
 
 // Anyscale Inference for Mixtral (LLM)
@@ -24,15 +24,36 @@ const client = Instructor({
   mode: "JSON_SCHEMA",
 });
 
-export async function generateOutput(
-  prevState: { message: string },
-  formData: FormData,
-) {
-  // validate the form data using the schema
-  const validatedInputs = FormSchema.safeParse({
-    crushDescription: formData.get("crushDescription"),
-    style: formData.get("style"),
+async function generatePickupLines(
+  formData: FormInputProps,
+): Promise<string[]> {
+  // call the Mixtral API to generate the pickup lines
+
+  const PickupLines = await client.chat.completions.create({
+    model: "mistralai/Mixtral-8x7B-Instruct-v0.1",
+    messages: [
+      { role: "system", content: promptInstructions },
+      {
+        role: "user",
+        content: `Description of my crush: ${formData.crushDescription}\nStyle of pickup lines: ${formData.style}`,
+      },
+    ],
+    response_model: { schema: OutputSchema, name: "PickupLines" },
+    max_tokens: 1000,
+    max_retries: 3,
+    temperature: 1,
   });
+
+  // parse the pickup line texts from the data
+  return parsePickupLineTexts(PickupLines);
+}
+
+export async function generateOutput(
+  prevState: GenerateOutputState,
+  formData: FormData,
+): Promise<GenerateOutputState> {
+  // validate the form data using the schema
+  const validatedInputs = parseFormData(formData);
 
   // Return early if the form data is invalid
   if (!validatedInputs.success) {
@@ -43,32 +64,48 @@ export async function generateOutput(
   }
 
   try {
-    // call the Mixtral API to generate the pickup lines
-    const PickupLines = await client.chat.completions.create({
-      model: "mistralai/Mixtral-8x7B-Instruct-v0.1",
-      messages: [
-        { role: "system", content: promptInstructions },
-        {
-          role: "user",
-          content: `Description of my crush: ${validatedInputs.data.crushDescription}\nStyle of pickup lines: ${validatedInputs.data.style}`,
-        },
-      ],
-      response_model: { schema: OutputSchema, name: "PickupLines" },
-      max_tokens: 1000,
-      max_retries: 3,
-    });
+    console.log("generating pickup lines...");
+    const listPickupLines = await generatePickupLines(validatedInputs.data);
+    console.log("First pickup lines generated");
+    console.log(listPickupLines);
+    return {
+      message: "success",
+      pickupLines: listPickupLines,
+      InitialFormState: validatedInputs.data,
+    };
+  } catch (e) {
+    console.log(e);
+    return {
+      message: "Error generating output.",
+      errors: e,
+    };
+  }
+}
 
-    // parse the pickup line texts from the data
-    const listPickupLines = parsePickupLineTexts(PickupLines);
+export async function regenerateOutput(
+  prevState: GenerateOutputState,
+  formData: FormData,
+): Promise<GenerateOutputState> {
+  try {
+    console.log("regenerating pickup lines...");
+    console.log(prevState.InitialFormState?.crushDescription);
+    const listPickupLines = await generatePickupLines(
+      prevState.InitialFormState!,
+    );
+
+    console.log("New pickup lines generated");
+    console.log(listPickupLines);
     return {
       message: "success",
       pickupLines: listPickupLines,
     };
   } catch (e) {
-    console.log(e);
+    console.error(e);
     return {
-      message: "error generating output...",
-      error: e,
+      message: "error",
+      pickupLines: prevState.pickupLines, // Keep the previous pickup lines
+      InitialFormState: prevState.InitialFormState,
+      errors: e instanceof Error ? e.message : "Unknown error occurred",
     };
   }
 }

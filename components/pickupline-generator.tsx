@@ -7,10 +7,7 @@ import { useFormState } from "react-dom";
 import PickupLineInputForm from "./pickupline-generator/input-form";
 import OutputForm from "./pickupline-generator/output-form";
 
-const initialState: {
-  message: string;
-  pickupLines?: string[];
-} = { message: "" };
+const initialState: GenerateOutputState = { message: "" };
 
 function PickupLineGenerator() {
   const [state, formAction] = useFormState(generateOutput, initialState);
@@ -28,7 +25,10 @@ function PickupLineGenerator() {
       {!state.pickupLines ? (
         <PickupLineInputForm formAction={formAction} />
       ) : (
-        <OutputForm pickupLines={state.pickupLines} />
+        <OutputForm
+          pickupLines={state.pickupLines}
+          InitialFormState={state.InitialFormState}
+        />
       )}
     </div>
   );

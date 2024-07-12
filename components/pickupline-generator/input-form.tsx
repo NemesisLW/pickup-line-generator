@@ -1,8 +1,8 @@
 import React from "react";
-import { Textarea } from "../ui/textarea";
-import { Input } from "../ui/input";
-import GenerateButton from "../generate-cta-button";
 import { useFormStatus } from "react-dom";
+import GenerateButton from "../generate-cta-button";
+import { Input } from "../ui/input";
+import { Textarea } from "../ui/textarea";
 
 function PickupLineInputForm({
   formAction,

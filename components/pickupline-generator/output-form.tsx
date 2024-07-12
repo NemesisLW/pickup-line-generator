@@ -1,17 +1,40 @@
+import { regenerateOutput } from "@/lib/ai/actions";
 import { copyToClipboard } from "@/lib/utils";
 import Image from "next/image";
 import React from "react";
+import { useFormState } from "react-dom";
+import { toast } from "sonner";
 import GenerateButton from "../generate-cta-button";
 import { Card, CardContent } from "../ui/card";
 
-function OutputForm({ pickupLines }: { pickupLines: string[] }) {
+// TODO: Debug Multiple Regeneration issues
+
+function OutputForm({ pickupLines, InitialFormState }: FormOutputProps) {
+  // const formActionPayload = regenerateOutput.bind(null, InitialFormState!);
+
+  const initialState: GenerateOutputState = {
+    message: "regenerating...",
+    InitialFormState: {
+      crushDescription: InitialFormState?.crushDescription!,
+      style: InitialFormState?.style!,
+    },
+  };
+  const [state, formAction] = useFormState(regenerateOutput, initialState);
+
+  if (state.message === "error") {
+    toast.error("Error regenerating pickup lines.");
+    console.log(state.pickupLines);
+  }
+
+  const currentPickupLines = state.pickupLines || pickupLines;
+
   return (
     <div className="mx-auto w-full max-w-lg space-y-4">
       <h2 className="text-center text-xl text-[#A5455C] mb-4">
         Copy the below pick up lines
       </h2>
 
-      {pickupLines.map((line, index) => (
+      {currentPickupLines.map((line, index) => (
         <Card key={index} className="border-2 border-[#FF2157] bg-white">
           <CardContent className="py-5 px-6">
             <div className="mb-2 flex items-center justify-between">
@@ -26,9 +49,14 @@ function OutputForm({ pickupLines }: { pickupLines: string[] }) {
           </CardContent>
         </Card>
       ))}
-      <div className="pt-4">
-        <GenerateButton className="w-full" text="Regenerate Pickup Line" />
-      </div>
+      <form className="pt-4">
+        <GenerateButton
+          className="w-full"
+          text="Regenerate Pickup Line"
+          formAction={formAction}
+          isServerAction
+        />
+      </form>
     </div>
   );
 }
