@@ -4,6 +4,7 @@ import { setTimeout } from "timers/promises";
 import Instructor from "@instructor-ai/instructor";
 import { OpenAI } from "openai";
 import { FallbackOutputSchema, OutputSchema } from "../schema";
+import { rateLimiter } from "../upstash";
 import { parseFormData, parsePickupLineTexts } from "../utils";
 import { experimentPrompt, promptInstructions } from "./instructions";
 
@@ -54,9 +55,21 @@ async function fallbackGeneratePickupLines(
   formData: FormInputProps,
 ): Promise<string[]> {
   // const jsonSchema = zodToJsonSchema(OutputSchema, "mySchema");
+
   const response = await togetherai.chat.completions.create({
     model: "mistralai/Mixtral-8x7B-Instruct-v0.1",
     messages: [
+      {
+        role: "system",
+        content:
+          "\n" +
+          "          Given a user prompt, you will return fully valid JSON based on the following description.\n" +
+          "          You will return no other prose. You will take into account any descriptions or required parameters within the schema\n" +
+          "          and return a valid and fully escaped JSON object that matches the schema and those instructions.\n" +
+          "\n" +
+          "          description: \n" +
+          "        ",
+      },
       { role: "system", content: experimentPrompt },
       {
         role: "user",
@@ -71,16 +84,22 @@ async function fallbackGeneratePickupLines(
     top_p: 1,
     frequency_penalty: 0.6,
   });
-  const parsedJson = JSON.parse(response.choices[0].message.content!);
-  const pickupLines = FallbackOutputSchema.parse(parsedJson);
-  return pickupLines.pickupLines;
+  try {
+    const parsedJson = JSON.parse(response.choices[0].message.content!);
+    const pickupLines = FallbackOutputSchema.parse(parsedJson);
+    return pickupLines.pickupLines;
+  } catch (error) {
+    throw new Error(
+      "Try Again - Error parsing JSON response from fallback API",
+    );
+  }
 }
 
 // Generate pickup lines with fallback
 async function generatePickupLinesWithFallback(
   params: GenerationParams,
 ): Promise<string[]> {
-  const timeoutPromise = setTimeout(4500).then(() => {
+  const timeoutPromise = setTimeout(5000).then(() => {
     throw new Error(
       "Request timed out - Third party API Endpoints may be experiencing issues",
     );
@@ -156,6 +175,18 @@ export async function regenerateOutput(
   try {
     if (!prevState.InitialFormState) {
       throw new Error("Initial form state is missing");
+    }
+
+    // Apply Rate Limiting
+    const { success, reset, error } = await rateLimiter();
+
+    if (!success) {
+      return {
+        message: "error",
+        pickupLines: prevState.pickupLines,
+        InitialFormState: prevState.InitialFormState,
+        errors: `${error}. Try again at ${new Date(reset).toLocaleTimeString()}`,
+      };
     }
 
     const listPickupLines = await generatePickupLinesWithFallback({

@@ -19,7 +19,9 @@ function OutputForm({ pickupLines, InitialFormState }: FormOutputProps) {
   const currentPickupLines = state.pickupLines || pickupLines;
 
   if (state.message === "error" && state.errors) {
-    toast.error(`Error regenerating pickup lines: ${state.errors}`);
+    toast.error("Error regenerating pickup lines.", {
+      description: state.errors,
+    });
   }
 
   return (

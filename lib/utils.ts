@@ -34,3 +34,24 @@ export function parsePickupLineTexts(data: OutputSchemaType): string[] {
 
   return texts;
 }
+
+export function formatWaitTime(resetTimestamp: number): string {
+  const now = Date.now();
+  const waitTime = resetTimestamp - now;
+
+  if (waitTime <= 0) {
+    return "a moment";
+  }
+
+  const seconds = Math.floor(waitTime / 1000);
+  const minutes = Math.floor(seconds / 60);
+  const hours = Math.floor(minutes / 60);
+
+  if (hours > 0) {
+    return `${hours} hour${hours > 1 ? "s" : ""}`;
+  } else if (minutes > 0) {
+    return `${minutes} minute${minutes > 1 ? "s" : ""}`;
+  } else {
+    return `${seconds} second${seconds > 1 ? "s" : ""}`;
+  }
+}

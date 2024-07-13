@@ -9,12 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@hookform/resolvers": "^3.9.0",
     "@instructor-ai/instructor": "^1.5.0",
     "@radix-ui/react-label": "^2.1.0",
     "@radix-ui/react-slot": "^1.1.0",
     "@supabase/ssr": "^0.4.0",
     "@supabase/supabase-js": "^2.44.3",
+    "@upstash/ratelimit": "^1.2.1",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "lucide-react": "^0.403.0",
@@ -24,7 +24,6 @@
     "openai": "^4.52.7",
     "react": "^18",
     "react-dom": "^18",
-    "react-hook-form": "^7.52.1",
     "sonner": "^1.5.0",
     "tailwind-merge": "^2.4.0",
     "tailwindcss-animate": "^1.0.7",
