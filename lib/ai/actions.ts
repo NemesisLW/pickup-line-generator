@@ -67,6 +67,9 @@ async function fallbackGeneratePickupLines(
     // @ts-ignore – Together.ai supports schema while OpenAI does not
     // response_format: { type: "json_object", schema: jsonSchema },
     max_tokens: 1000,
+    temperature: 1.5,
+    top_p: 1,
+    frequency_penalty: 0.6,
   });
   const parsedJson = JSON.parse(response.choices[0].message.content!);
   const pickupLines = FallbackOutputSchema.parse(parsedJson);

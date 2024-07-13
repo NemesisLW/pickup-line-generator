@@ -36,7 +36,7 @@ const experimentPrompt =
   1. A description of their crush. \
   2. The style or theme of the pickup lines they are looking for. \
   Based on this information, Format the output as a JSON object with a key 'pickupLines' containing a list of the two pickup lines.\
-  - The pickup lines should be tailored to both the description of the crush and the specified style or theme. \
+  - The pickup lines should be tailored to both the description of the crush and the specified style or theme. Be Creative! \
   Return the object in JSON format.";
 
 export {
