@@ -73,7 +73,6 @@ async function fallbackGeneratePickupLines(
   });
   const parsedJson = JSON.parse(response.choices[0].message.content!);
   const pickupLines = FallbackOutputSchema.parse(parsedJson);
-  console.log("pickupLines", pickupLines.pickupLines);
   return pickupLines.pickupLines;
 }
 
@@ -81,7 +80,7 @@ async function fallbackGeneratePickupLines(
 async function generatePickupLinesWithFallback(
   params: GenerationParams,
 ): Promise<string[]> {
-  const timeoutPromise = setTimeout(7000).then(() => {
+  const timeoutPromise = setTimeout(4500).then(() => {
     throw new Error(
       "Request timed out - Third party API Endpoints may be experiencing issues",
     );
@@ -90,17 +89,29 @@ async function generatePickupLinesWithFallback(
   const generatePromise = generatePickupLines(params.initialFormState);
   const fallbackPromise = fallbackGeneratePickupLines(params.initialFormState);
 
-  const listPickupLines = await Promise.race([
-    generatePromise,
-    timeoutPromise,
-    fallbackPromise,
-  ]);
+  try {
+    // First, try to get results from the main function
+    const result = await Promise.race([generatePromise, timeoutPromise]);
+    if (Array.isArray(result) && result.length > 0) {
+      return result;
+    }
+  } catch (error) {
+    // If main function fails or times out, we'll continue to the fallback
+    console.log("Main function failed or timed out, trying fallback");
+  }
 
-  if (!listPickupLines || listPickupLines.length === 0) {
+  // If we're here, it means the main function didn't succeed, so we'll use the fallback
+  const fallbackResult = await Promise.race([fallbackPromise, timeoutPromise]);
+
+  if (
+    !fallbackResult ||
+    !Array.isArray(fallbackResult) ||
+    fallbackResult.length === 0
+  ) {
     throw new Error("No pickup lines were generated");
   }
 
-  return listPickupLines;
+  return fallbackResult;
 }
 
 // Handle Generation Requests
