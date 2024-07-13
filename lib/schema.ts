@@ -24,3 +24,9 @@ export const OutputSchema = z.object({
 });
 
 export type OutputSchemaType = z.infer<typeof OutputSchema>;
+
+export const FallbackOutputSchema = z.object({
+  pickupLines: z.array(z.string()).length(2),
+});
+
+export type FallbackOutputSchemaType = z.infer<typeof FallbackOutputSchema>;

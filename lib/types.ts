@@ -3,6 +3,10 @@ interface FormInputProps {
   crushDescription: string;
 }
 
+interface GenerationParams {
+  initialFormState: FormInputProps;
+}
+
 interface GenerateButtonProps {
   className?: string;
   text?: string;

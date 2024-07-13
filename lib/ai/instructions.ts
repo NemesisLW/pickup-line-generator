@@ -25,14 +25,23 @@ const promptInstructionswithExample =
   \
   Output: \
   { \
-      "pickup_lines": [ \
+      "pickupLines": [ \
           { "id": 1, "text": "Are you a library book? Because you’ve got \'fine\' written all over you." }, \
           { "id": 2, "text": "If you were a book, I\'d never put you down." } \
       ] \
   }';
 
+const experimentPrompt =
+  "The user will provide you with: \
+  1. A description of their crush. \
+  2. The style or theme of the pickup lines they are looking for. \
+  Based on this information, Format the output as a JSON object with a key 'pickupLines' containing a list of the two pickup lines.\
+  - The pickup lines should be tailored to both the description of the crush and the specified style or theme. \
+  Return the object in JSON format.";
+
 export {
   basepromptInstructions,
   promptInstructions,
   promptInstructionswithExample,
+  experimentPrompt,
 };
