@@ -40,7 +40,7 @@ This project is built using modern web technologies and frameworks:
 - [Tailwind CSS](https://tailwindcss.com/) for styling and responsive design
 - [Shadcn UI](https://ui.shadcn.com/) for the beautiful UI components
 - [Supabase](https://supabase.io/) for authentication services
-- [Anyscale](https://anyscale.com/) Inference for Mixtral (LLM)
+- [Anyscale](https://anyscale.com/) & [Together.ai](https://www.together.ai/) Inference for Mixtral (LLM)
 - [OpenAI SDK](https://openai.com/) for API calls
 - [Vercel](https://vercel.com/) (for deployment)
 
@@ -90,7 +90,7 @@ To get a local copy up and running, follow these simple steps.
 
 ## Roadmap
 
-- [ ] Rate Limiting API calls & Regenerations (w/ [Upstash](https://github.com/upstash/ratelimit-js))
+- [x] Rate Limiting API calls & Regenerations (w/ [Upstash](https://github.com/upstash/ratelimit-js))
 - [ ] Implement user profiles and saved pickup lines
 - [ ] Add social sharing features
 - [ ] Expand language support for international users
