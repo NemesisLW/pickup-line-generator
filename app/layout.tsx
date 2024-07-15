@@ -1,5 +1,6 @@
 import { Toaster } from "@/components/ui/sonner";
 import type { Metadata } from "next";
+import PlausibleProvider from "next-plausible";
 import { Grand_Hotel } from "next/font/google";
 import "./globals.css";
 
@@ -17,10 +18,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={titlefont.className}>
-        <main>{children}</main>
-        <Toaster richColors />
-      </body>
+      <PlausibleProvider domain={process.env.NEXT_PUBLIC_APP_DOMAIN!}>
+        <body className={titlefont.className}>
+          <main>{children}</main>
+          <Toaster richColors />
+        </body>
+      </PlausibleProvider>
     </html>
   );
 }
